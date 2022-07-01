@@ -51,7 +51,7 @@ Ce qui causera un pick d’utilisateur suite à cette annonce.
 
 | Business Transactions | User Load | Response Time (ms) | Transactions per hour |
 | --- | --- | --- | --- |
-| Access to landing page | 4000 | 9-12 | 20 000 |
+| Access to landing page | 5000 | 9-12 | 18 000 |
 | Access to list product sold page | 3000 | 9-12 | 15 000 |
 |  |  |  |  |
 
@@ -62,3 +62,48 @@ Puce Apple M1 Pro
 32Go RAM
 
 macOs Monterey 12.4
+
+Aucune idée de l'environnement en production
+
+## V - Planification des tests
+
+Scénario:
+S'assurer qu'un achat puisse être réaliser pendant une heure de pointe pendant la période de Noël. Le système doit maintenir un temps de réponse convenable lors des phases d'achat pour conservé un taux de conversion élevé.
+
+- Ramp-up -> 15 Vuser / 10s
+- Steady -> 750Vuser - 10min.
+- Ramp-down -> 25Vuser / 10s.
+
+Pour simuler la charge et décharge progressive du site en entrée et sortie d'heure de pointe le soir.
+	 
+Métric à surveiller: Temps de réponse , Average load time ,Wait time, request per seconds.
+
+Les métrics qui définiront la réussite/échec du test sera principalement le temps de réponse pour les entrées ainsi que le wait time pour garder la converstion client.
+
+## VI - Etapes des tests
+
+| Step # | Business Process : Nouveau client  |
+|--------------|:-----------:|
+| 1 | Home |
+| 2 | Cherche un produit |
+| 3 | Cherche un produit |
+| 4 | Personnalisé son produit |
+| 5 | Inscription |
+| 6 | Login |
+| 7 | Panier |
+| 8 | Livraison |
+| 9 | Payement |
+| 10 | Logout |
+
+
+
+| Step # | Business Process : Achat d'un produit |
+|--------------|:-----------:|
+| 1 | Home |
+| 2 | Login |
+| 3 | Cherche un produit |
+| 4 | Cherche un produit|
+| 5 | Personnalisé son produit|
+| 6 | Livraison |
+| 7 | Payement |
+| 8 | Logout |
