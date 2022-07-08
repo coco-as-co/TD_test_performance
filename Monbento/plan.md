@@ -97,7 +97,7 @@ Les métrics qui définiront la réussite/échec du test sera principalement le 
 
 
 
-| Step # | Business Process : Achat d'un produit |
+| Step # | Business Process buy : Achat d'un produit |
 |--------------|:-----------:|
 | 1 | Home |
 | 2 | Login |
@@ -107,3 +107,25 @@ Les métrics qui définiront la réussite/échec du test sera principalement le 
 | 6 | Livraison |
 | 7 | Payement |
 | 8 | Logout |
+
+## VII - Execution des tests
+
+
+| Test Run | Test Scenario Summary |
+|--------------|:-----------:|
+| Business Process buy | To validate the performance test scripts and monitors |
+| Cycle 1 - Run 1 | Load Test - 10 Minutes test with peak load |
+| Cycle 1 - Run 2 | Repeat Load Test - 10 Minutes test with peak load |
+| Cycle 2 - Run 1 | Load Test - 20 Minutes test with peak load |
+| Cycle 2 - Run 2 | Repeat Load Test - 20 Minutes test with peak load |
+
+|  | Test Details |
+|--------------|:-----------:|
+| **Purpose** | Peak hour transaction processing will be under examination to <br/> determine if the system can maintain response times <br/> under the highest anticipated load and maintain the Average load time for consumer store system. <br/> This test is designed to collect performance <br/> metrics on transaction throughput, response times, Waiting time <br/> and average load, <br/> in comparison to Performance requirements. |
+| **No. of Tests** | 2 (2 tests per cycle) |
+| **Duration** | Ramp-up: 10min - Steady State: 20min - Ramp-down: 10min |
+| **Scripts** | CSV login script , Request product param to the API |
+| **Scenario Name** | Business Process buy |
+| **User Load / Volume** | 750 Vusers (Threads) Load |
+| **Entry Criteria** | <br/> 1. Test Environment should be stable and ready to use <br/>2. The buying system have to be ready to use <br/> 3. Test Data should be available <br/> 4. Test scripts should be ready to use |
+| **Validation Criteria** | 1. The mean of the response time should be below 20 ms <br/> 2. The mean of Average load time should be below 40ms <br/> 3. The error rate should be below 5% |
